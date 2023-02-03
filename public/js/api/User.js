@@ -10,6 +10,9 @@ class User {
    * */
   static setCurrent(user) {
 
+    console.log( current ); // объект { id: 12, name: 'Vlad' }
+    localStorage.setItem('user', user);
+    console.log( localStorage.user ); // строка "{"id":12,"name":"Vlad"}
   }
 
   /**
@@ -17,6 +20,9 @@ class User {
    * пользователе из локального хранилища.
    * */
   static unsetCurrent() {
+    localStorage.removeItem('user');
+    let current = User.current();
+    console.log( current ); // объект { id: 12, name: 'Vlad' }
 
   }
 
@@ -25,15 +31,30 @@ class User {
    * из локального хранилища
    * */
   static current() {
-
+    const current = User.current();
+    console.log( current ); // объект { id: 12, name: 'Vlad' }
   }
 
   /**
    * Получает информацию о текущем
    * авторизованном пользователе.
    * */
-  static fetch(callback) {
+  static fetch(callback = ()=>{
+    console.log( response.user.name ); // Vlad
+    console.log( User.current().name );
 
+    console.log( response.user ); // undefined
+    console.log( response.success ); // false
+    if (!response.success) User.unsetCurrent();
+    console.log( User.current() ); // undefined
+  }) {
+    let option = {};
+    option.data = '';
+    option.callback = callback;
+    option.method = 'GET';
+    option.url = '/current'; // where is beginning???
+    createRequest(option);
+    
   }
 
   /**
@@ -42,7 +63,9 @@ class User {
    * сохранить пользователя через метод
    * User.setCurrent.
    * */
-  static login(data, callback) {
+  static login(data, callback = ()=>{
+    console.log(response);
+  }) {
     createRequest({
       url: this.URL + '/login',
       method: 'POST',
@@ -63,8 +86,15 @@ class User {
    * сохранить пользователя через метод
    * User.setCurrent.
    * */
-  static register(data, callback) {
-
+  static register(data, callback = (err, response)=>{
+      console.log(response);
+  }) {
+    let option = {};
+    option.data = data;
+    option.callback = callback;
+    option.method = 'GET';
+    option.url = Account.url;
+    createRequest(option);
   }
 
   /**

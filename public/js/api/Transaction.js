@@ -5,5 +5,7 @@
  * */
 class Transaction extends Entity {
 
+    static url = '/transactions';
+
 }
 
