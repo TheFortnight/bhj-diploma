@@ -10,6 +10,10 @@ class RegisterForm extends AsyncForm {
    * и закрывает окно, в котором находится форма
    * */
   onSubmit(data) {
+    let submit = User.register(data);
+    if(submit != null){
+      App.setState('user-logged')
+        }
 
   }
 }

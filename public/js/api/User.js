@@ -4,6 +4,7 @@
  * Имеет свойство URL, равное '/user'.
  * */
 class User {
+
   /**
    * Устанавливает текущего пользователя в
    * локальном хранилище.
@@ -66,6 +67,7 @@ class User {
   static login(data, callback = ()=>{
     console.log(response);
   }) {
+    console.log('URL: '+this.url);
     createRequest({
       url: this.URL + '/login',
       method: 'POST',
@@ -94,7 +96,17 @@ class User {
     option.callback = callback;
     option.method = 'GET';
     option.url = Account.url;
-    createRequest(option);
+   
+    createRequest(option)
+    .then((response)=>{
+       return response;
+    })
+    .catch((error)=>{
+      console.log(error);
+      return null;//?????????
+    })
+    
+
   }
 
   /**
@@ -105,3 +117,6 @@ class User {
 
   }
 }
+
+
+
