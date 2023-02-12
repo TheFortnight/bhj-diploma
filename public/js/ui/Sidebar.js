@@ -40,6 +40,10 @@ class Sidebar {
     let logOutBtn = document.querySelector('.menu-item_logout');
 
     regBtn.onclick = function(event){
+      //Такой код работает, но задание явно не такое
+    /*  let elem = document.querySelector('#modal-register');
+      elem.style.display = "block";*/
+      //Пытаюсь делать согласно ТЗ, но не работает
       let modal = App.getModal('register'); 
       let currModal = new Modal(modal);
       currModal.open();

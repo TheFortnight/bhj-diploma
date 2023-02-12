@@ -46,8 +46,9 @@ class Modal {
    * со значением «block»
    * */
   open() {
-    //let el = this.element;
-    this.element.style.dispaly = "block";
+    console.log('ELEMENT: '+this.element);
+    //et el = document.querySelector(this.element);
+    //el.style.dispaly = "block";
     //el.style.dispaly = 'block';
     
 
