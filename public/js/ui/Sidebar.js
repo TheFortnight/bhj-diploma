@@ -45,14 +45,14 @@ class Sidebar {
       elem.style.display = "block";*/
       //Пытаюсь делать согласно ТЗ, но не работает
       let modal = App.getModal('register'); 
-      let currModal = new Modal(modal);
-      currModal.open();
+      modal.open();
+
       event.preventDefault();
     }
 
     logInBtn.onclick = function(event){
       let modal = App.getModal('login'); // as a string or a variable???
-      Modal.open(modal);
+      modal.open();
       event.preventDefault();
     }
 

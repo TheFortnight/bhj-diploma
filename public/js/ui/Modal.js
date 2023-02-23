@@ -12,11 +12,13 @@ class Modal {
    * необходимо выкинуть ошибку.
    * */
   constructor(element){
+    
     this.element = element;
-    if(this.element == undefined) {
-      throw new Error('No ELEMENT!');
-      //registerEvents();
-  }
+if (!this.element) {
+throw new Error('Передан пустой элемент');
+} else {
+this.registerEvents();
+}
   }
 
   /**
@@ -25,21 +27,21 @@ class Modal {
    * (с помощью метода Modal.onClose)
    * */
   registerEvents() {
-    let elArr = this.element.querySelectorAll("[data-dismiss]='modal'");
+    let elArr = document.querySelectorAll("[data-dismiss='modal']");
     elArr = Array.from(elArr);
-    elArr.array.forEach(elem => elem.onclick = function(event){
+    elArr.forEach(item => {
+      item.addEventListener('click', () => {
       this.onClose();
-      event.preventDefault();
-    });
+      });
+      });
   }
 
   /**
    * Срабатывает после нажатия на элементы, закрывающие окно.
    * Закрывает текущее окно (Modal.close())
    * */
-  onClose(e) {
+  onClose() {
     this.close();
-    e.preventDefault();
   }
   /**
    * Открывает окно: устанавливает CSS-свойство display
@@ -47,9 +49,8 @@ class Modal {
    * */
   open() {
     console.log('ELEMENT: '+this.element);
-    //et el = document.querySelector(this.element);
-    //el.style.dispaly = "block";
-    //el.style.dispaly = 'block';
+    this.element.style.display = "block";
+    
     
 
   }
@@ -57,7 +58,6 @@ class Modal {
    * Закрывает окно: удаляет CSS-свойство display
    * */
   close(){
-    let el = this.element;
-    el.style.dispaly  = '';
+    this.element.style.display = "none";
   }
 }
