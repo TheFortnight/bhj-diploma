@@ -3,8 +3,9 @@
  * на сервер.
  * */
 const createRequest = (options) => {
-    console.log('CREATEREQ WORKS');
-    //console.log('METHOD IS: '+options.method);
+
+    console.log(options);
+        
     const xhr = new XMLHttpRequest;
     xhr.responseType = 'json';
     
@@ -19,10 +20,11 @@ const createRequest = (options) => {
         xhr.send();
     }
     else{
-        formData = new FormData;
-        formData.append('mail', options.data.email);
-        if(options.data.password) formData.append('password', options.data.password);
-        if(options.data.name) formData.append('name', options.data.name);
+        const formData = options.data;
+        //formData = new FormData;
+        //formData.append('mail', options.data.email);
+        //if(options.data.password) formData.append('password', options.data.password);
+        //if(options.data.name) formData.append('name', options.data.name);
 
         xhr.open(options.method, options.url);
        // xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
@@ -37,18 +39,3 @@ const createRequest = (options) => {
     }
 };
 
-const data1 = {
-    name: 'Vlad',
-    email: 'test@test.ru',
-    password: 'abracadabra'
-  }
-
-  let params = {};
-  params.data = data1;
-  params.method = 'POST';
-  params.responseType = 'json';
-  params.url = '/register';
-
-
-  //setTimeout(()=> createRequest(params), 5000);
-  //createRequest(params);

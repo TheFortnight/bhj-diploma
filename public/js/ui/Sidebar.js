@@ -40,18 +40,14 @@ class Sidebar {
     let logOutBtn = document.querySelector('.menu-item_logout');
 
     regBtn.onclick = function(event){
-      //Такой код работает, но задание явно не такое
-    /*  let elem = document.querySelector('#modal-register');
-      elem.style.display = "block";*/
-      //Пытаюсь делать согласно ТЗ, но не работает
+      
       let modal = App.getModal('register'); 
       modal.open();
-
       event.preventDefault();
     }
 
     logInBtn.onclick = function(event){
-      let modal = App.getModal('login'); // as a string or a variable???
+      let modal = App.getModal('login');
       modal.open();
       event.preventDefault();
     }

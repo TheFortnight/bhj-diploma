@@ -88,23 +88,18 @@ class User {
    * сохранить пользователя через метод
    * User.setCurrent.
    * */
-  static register(data, callback = (err, response)=>{
+  static register(data, callback = (err, response = "response")=>{
       console.log(response);
   }) {
     let option = {};
     option.data = data;
     option.callback = callback;
-    option.method = 'GET';
-    option.url = Account.url;
+    option.method = 'POST';
+    option.url = "/register";
    
-    createRequest(option)
-    .then((response)=>{
-       return response;
-    })
-    .catch((error)=>{
-      console.log(error);
-      return null;//?????????
-    })
+    createRequest(option);
+    
+    
     
 
   }

@@ -15,6 +15,7 @@ class AsyncForm {
   constructor(element) {
     if(element == undefined) throw new Error('No element!');
     this.element = element;
+    this.registerEvents();
   }
 
   /**
@@ -22,11 +23,12 @@ class AsyncForm {
    * вызывает метод submit()
    * */
   registerEvents() {
-    this.element.onclick = function(event){ 
+    this.element.addEventListener ('submit', (event) => {
       event.preventDefault();
-      this.element.submit(); //???????????????
+      console.log('BTN CLICKED');
+      this.submit();
     }
-  }
+  )};
 
   /**
    * Преобразует данные формы в объект вида
@@ -36,17 +38,25 @@ class AsyncForm {
    * }
    * */
   getData() {
-    const form = document.getElementById('myform');
-    console.log('FORM: '+form);
-    let asyncForm = new AsyncForm( form ); // not properly declared?
+    //const form = document.querySelector('.form');
+    
+    let formData = new FormData(this.element);
+    let data = {};
 
-    console.log( asyncForm.getData());
-    return asyncForm; // reuiqred???
+    for (const [key, value] of formData) {
+      console.log(`${key}: ${value}\n`);
+      data[key] = value;
+    };
+    console.log(data);
+    
+    return formData;
+    //let asyncForm = new AsyncForm(form);
+    //console.log(asyncForm.getData());
+    //return asyncForm; // required???
   }
 
-  onSubmit(options){
-    console.log(options);
-    createRequest(options);
+  onSubmit(){
+    
   }
 
   /**
@@ -55,8 +65,9 @@ class AsyncForm {
    * */
   submit() {
     let data = this.getData();
-    const form = document.getElementById('myform');
-    form.reset();
+    //const form = document.getElementById('myform');
+    //form.reset();
     this.onSubmit(data); //??? Получает данные формы из метода getData и передаёт в метод onSubmit
+    this.element.reset();
   }
 }
