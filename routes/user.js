@@ -11,6 +11,7 @@ const FileSync = require('lowdb/adapters/FileSync', {
 
 //Запрос регистрации пользователя
 router.post("/register",upload.none(), function(request, response) {
+    //console.log('REQ RECEIVED!!!');
     const db = low(new FileSync('db.json'));// получение БД
     //получение параметров из тела запроса
     const { name, email, password } = request.body;

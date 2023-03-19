@@ -31,7 +31,12 @@ class App {
    * состояние 'init'
    * */
   static initUser() {
-    User.fetch(() => this.setState(User.current() ? "user-logged" : "init"));
+    User.fetch(() => {
+      console.log('INIT USER CALLBACK WORKS');
+      this.setState(User.current() ? "user-logged" : "init");
+
+    });
+      
   }
 
   /**

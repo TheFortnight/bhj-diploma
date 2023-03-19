@@ -11,10 +11,15 @@ class RegisterForm extends AsyncForm {
    * */
   onSubmit(data) {
     
-    let submit = User.register(data);
-    if(submit != null){
-      App.setState('user-logged')
-        }
-
+    User.register(data, () => {      
+      App.setState( 'user-logged' );
+      this.element.reset();
+      let el = this.element.parentElement;
+      el = el.parentElement;
+      el = el.parentElement;
+      el = el.parentElement;
+      el = new Modal(el);
+      el.close();
+    });
   }
 }

@@ -12,6 +12,8 @@ class UserWidget {
    * необходимо выкинуть ошибку.
    * */
   constructor(element){
+    if (element === undefined) throw new Error ('Передпн пустой элемент!');
+    this.element = element;
 
   }
 
@@ -23,6 +25,12 @@ class UserWidget {
    * авторизованного пользователя
    * */
   update(){
+    const user = User.current();
+    
+    if(user !== false) {  // Работает  через раз. Скорее всего сделано не по ТЗ
+      let userName = document.querySelector('.user-name');
+      userName.innerHTML = user.name;
+    }
 
   }
-}
+};

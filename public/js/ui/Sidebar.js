@@ -53,7 +53,7 @@ class Sidebar {
     }
 
     logOutBtn.onclick = function(event){
-      User.logout().then(()=> App.setState('init'));
+      User.logout(() => App.setState('init'));
       event.preventDefault();
     }
   }

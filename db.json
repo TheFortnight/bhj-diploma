@@ -1,10 +1,34 @@
 {
   "users": [
     {
-      "name": "demo",
-      "email": "demo@demo",
+      "name": "Oleg",
+      "email": "oleg@demo.ru",
       "password": "demo",
-      "id": "1"
+      "id": "cq3onmclfbmu7qc"
+    },
+    {
+      "name": "Oleg",
+      "email": "oleg@dem9o.ru",
+      "password": "demo",
+      "id": "cq3obj0lfbmv9zt"
+    },
+    {
+      "name": "Oleg",
+      "email": "oleg@d1emo.ru",
+      "password": "demo",
+      "id": "cq3ohdolfca4686"
+    },
+    {
+      "name": "Oleg",
+      "email": "ole2g@demo.ru",
+      "password": "demo",
+      "id": "cq3on5olfcg9iii"
+    },
+    {
+      "name": "Oleg",
+      "email": "oleg@neto.net",
+      "password": "123",
+      "id": "cq3oo7wlfcw5j4r"
     }
   ],
   "accounts": [
@@ -22,6 +46,31 @@
       "name": "Бизнес",
       "user_id": "1",
       "id": "3"
+    },
+    {
+      "name": "Init",
+      "user_id": "cq3oo7wlfcw5j4r",
+      "id": "cq3olqwlffjtnqb"
+    },
+    {
+      "name": "Init2",
+      "user_id": "cq3oo7wlfcw5j4r",
+      "id": "cq3ol0wlffjxb33"
+    },
+    {
+      "name": "Init3",
+      "user_id": "cq3oo7wlfcw5j4r",
+      "id": "cq3oi38lffjy19e"
+    },
+    {
+      "name": "Init5",
+      "user_id": "cq3oo7wlfcw5j4r",
+      "id": "cq3o584lffjyde3"
+    },
+    {
+      "name": "Init6",
+      "user_id": "cq3oo7wlfcw5j4r",
+      "id": "cq3ok58lffjytws"
     }
   ],
   "transactions": [

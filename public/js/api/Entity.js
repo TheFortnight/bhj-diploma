@@ -14,9 +14,13 @@ class Entity {
   static list(data, callback){
     let option = {};
     option.data = data;
-    option.callback = callback;
+    option.callback = (response) => {
+      if (response.success) {
+        callback(response.data);
+      }
+    };
     option.method = 'GET';
-    option.url = Entity.url;
+    option.url = this.url; // this???
     createRequest(option);
   }
 
@@ -30,7 +34,7 @@ class Entity {
     option.data = data;
     option.callback = callback;
     option.method = 'PUT';
-    option.url = Entity.url;
+    option.url = this.url;
     createRequest(option);
   }
 

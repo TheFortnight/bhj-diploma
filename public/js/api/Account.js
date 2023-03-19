@@ -14,7 +14,7 @@ class Account extends Entity {
     option.data = '';
     option.callback = callback;
     option.method = 'GET';
-    option.url = Account.url + id;
+    option.url = this.url + id;
     createRequest(option);
 
   }
