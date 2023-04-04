@@ -208,6 +208,72 @@
       "sum": 300000,
       "type": "expense",
       "user_id": "1"
+    },
+    {
+      "id": "cq3o8xklg2uchzg",
+      "type": "expense",
+      "name": "1",
+      "sum": 15,
+      "account_id": "cq3olqwlffjtnqb",
+      "user_id": "cq3oo7wlfcw5j4r",
+      "created_at": "2023-04-04T22:37:47.403Z"
+    },
+    {
+      "id": "cq3omb0lg2ude4q",
+      "type": "expense",
+      "name": "1",
+      "sum": 15,
+      "account_id": "cq3olqwlffjtnqb",
+      "user_id": "cq3oo7wlfcw5j4r",
+      "created_at": "2023-04-04T22:38:29.066Z"
+    },
+    {
+      "id": "cq3ob1wlg2ugy86",
+      "type": "income",
+      "name": "3",
+      "sum": 15,
+      "user_id": "cq3oo7wlfcw5j4r",
+      "created_at": "2023-04-04T22:41:15.077Z"
+    },
+    {
+      "id": "cq3o3aolg2uhhcr",
+      "type": "income",
+      "name": "1",
+      "sum": 30,
+      "user_id": "cq3oo7wlfcw5j4r",
+      "created_at": "2023-04-04T22:41:39.866Z"
+    },
+    {
+      "id": "cq3ojs0lg2uhqyx",
+      "type": "income",
+      "name": "1",
+      "sum": 30,
+      "user_id": "cq3oo7wlfcw5j4r",
+      "created_at": "2023-04-04T22:41:52.328Z"
+    },
+    {
+      "id": "cq3odaglg2uit18",
+      "type": "income",
+      "name": "1",
+      "sum": 15,
+      "user_id": "cq3oo7wlfcw5j4r",
+      "created_at": "2023-04-04T22:42:41.659Z"
+    },
+    {
+      "id": "cq3o1u0lg2v00lr",
+      "type": "income",
+      "name": "12",
+      "sum": 30,
+      "user_id": "cq3oo7wlfcw5j4r",
+      "created_at": "2023-04-04T22:56:04.622Z"
+    },
+    {
+      "id": "cq3o8bwlg2v0uy2",
+      "type": "income",
+      "name": "1",
+      "sum": 30,
+      "user_id": "cq3oo7wlfcw5j4r",
+      "created_at": "2023-04-04T22:56:43.945Z"
     }
   ]
 }

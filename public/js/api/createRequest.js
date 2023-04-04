@@ -37,7 +37,7 @@
 
 const createRequest = (options) => {
 
-    console.log('RECEIVED options: ' + JSON.stringify(options));
+    //console.log('RECEIVED options: ' + JSON.stringify(options));
         
     const xhr = new XMLHttpRequest;
     xhr.responseType = 'json';
@@ -60,7 +60,7 @@ const createRequest = (options) => {
         xhr.send();
         xhr.onload = () => {
           const respObj = xhr.response;           
-          console.log('XHR.RESPONSE success: '+respObj.success);
+          //console.log('XHR.RESPONSE success: '+respObj.success);
           if (xhr.status != 200) { 
 
         } else { 

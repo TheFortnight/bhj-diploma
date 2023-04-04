@@ -13,9 +13,9 @@ class User {
    * */
   static setCurrent(user) {
     let userObj = JSON.stringify({id: user.id, name: user.name});
-    console.log('USER OBJ: ' + userObj ); // объект { id: 12, name: 'Vlad' }
+    //console.log('USER OBJ: ' + userObj ); // объект { id: 12, name: 'Vlad' }
     localStorage.setItem('user', userObj);
-    console.log('LOCAL STORAGE USER: ' + localStorage.user ); // строка "{"id":12,"name":"Vlad"}
+    //console.log('LOCAL STORAGE USER: ' + localStorage.user ); // строка "{"id":12,"name":"Vlad"}
   }
 
   /**
@@ -35,8 +35,8 @@ class User {
    * */
   static current() {
     const current = localStorage.getItem('user');
-    console.log('CURRENT USER FROM LOCAL STORAGE: ' + current ); // объект { id: 12, name: 'Vlad' }
-    console.log(typeof(current));
+   // console.log('CURRENT USER FROM LOCAL STORAGE: ' + current ); // объект { id: 12, name: 'Vlad' }
+   // console.log(typeof(current));
     if(typeof(current) === 'string' && current.includes('name')) return JSON.parse(current);
     else return false;
   }
@@ -53,7 +53,7 @@ class User {
     option.data = '';
     option.callback = (response) => {
       if(response.success)  {
-        console.log('CALL SET');
+        //console.log('CALL SET');
         const user = {id: response.user.id, name: response.user.name};
         User.setCurrent(user);
       };

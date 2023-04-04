@@ -41,6 +41,7 @@ class AsyncForm {
     let inputs = element.querySelectorAll('input');
     let data = {};
     inputs.forEach(input => {
+      console.log(input.name+': '+input.value)
       data[input.name] = input.value;
       
     });
