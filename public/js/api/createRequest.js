@@ -49,12 +49,16 @@ const createRequest = (options) => {
 
     if(options.method === 'GET'){
         let request = options.url;
-        for (const [key, value] of Object.entries(options.data)) {//???????????????????? 05.03.2023
+        for (const [key, value] of Object.entries(options.data)) {
             request += ``
             formData.append(key, value);
           };
+        url = options.url+'?'
+        for (let param in options.data) {
+          url += (param+'='+options.data[param]+'&');
+        }
 
-        url = options.url+'?mail='+options.data.email+'&password='+options.data.password;
+      //  url = options.url+'?mail='+options.data.email+'&password='+options.data.password;
         xhr.open('GET', url);
         xhr.responseType = 'json'; 
         xhr.send();
