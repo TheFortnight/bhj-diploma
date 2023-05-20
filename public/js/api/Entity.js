@@ -47,7 +47,7 @@ class Entity {
     option.data = data;
     option.callback = callback;
     option.method = 'DELETE';
-    option.url = Entity.url;
+    option.url = this.url;
     createRequest(option);
   }
 }

@@ -55,7 +55,8 @@ class AccountsWidget {
    * метода renderItem()
    * */
   update() {
-    let currUser = User.current();
+    const currUser = User.current();
+    console.log('CURR USER: '+JSON.stringify(currUser));
     if(currUser !== false) {
       Account.list(currUser, (response) => {
         if (response.length > 0) {
@@ -87,10 +88,11 @@ class AccountsWidget {
    * */
   onSelectAccount( element ) {
     let activeAcc = document.querySelector('.account.active');
-    console.log('ACTIVE ACC: '+activeAcc);
     if (activeAcc !== null) activeAcc.classList.remove('active');
     element.classList.add('active');
-   // App.showPage( 'transactions', { account_id: id_счёта }) // Specify structure!!!
+    const id = element.getAttribute('data-id');
+    console.log('ONSELECT ACCOUNT')
+    App.showPage( 'transactions', id) // Specify structure!!!
   }
 
   /**

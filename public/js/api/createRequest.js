@@ -53,21 +53,25 @@ const createRequest = (options) => {
             request += ``
             formData.append(key, value);
           };
+
         url = options.url+'?'
         for (let param in options.data) {
+        //  console.log('Key: '+param+'; Value: '+options.data[param]);
           url += (param+'='+options.data[param]+'&');
         }
+      //  console.log('OPTIONS DATA: '+ (options.data == '')+'; '+Date.now());
+       // console.log('XHR GET REQ URL: '+url);
 
-      //  url = options.url+'?mail='+options.data.email+'&password='+options.data.password;
         xhr.open('GET', url);
         xhr.responseType = 'json'; 
         xhr.send();
         xhr.onload = () => {
           const respObj = xhr.response;           
-          //console.log('XHR.RESPONSE success: '+respObj.success);
+         // console.log('XHR.RESPONSE success: '+respObj.success+'; '+xhr.status);
           if (xhr.status != 200) { 
 
-        } else { 
+        } else {
+        //  console.log('GET REQ RESP: '+JSON.stringify(respObj)) 
           options.callback(respObj);
         }
       }
@@ -93,7 +97,7 @@ const createRequest = (options) => {
         
         xhr.onload = () => {
           const respObj = xhr.response;           
-          console.log('XHR.RESPONSE success: '+respObj.success);
+        // console.log('XHR POST RESPONSE success: '+JSON.stringify(respObj));
           if (xhr.status != 200) { 
 
         } else { 

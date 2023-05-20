@@ -9,7 +9,7 @@ class CreateTransactionForm extends AsyncForm {
    * */
   constructor(element) {
     super(element)
-  }
+  } 
 
   /**
    * Получает список счетов с помощью Account.list
@@ -17,6 +17,7 @@ class CreateTransactionForm extends AsyncForm {
    * */
   renderAccountsList() {
     let accList = this.element.querySelector('.accounts-select');
+    accList.innerHTML = '';
     //let inAccList = document.querySelector('#income-accounts-list');
     Account.list("", (list) => {
       if (list.length > 0) {
@@ -38,7 +39,7 @@ class CreateTransactionForm extends AsyncForm {
    * в котором находится форма
    * */
   onSubmit(data) {
-   
+    
     Transaction.create(data, (response) => {
       if (response.success) {
         App.update();

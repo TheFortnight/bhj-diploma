@@ -13,9 +13,7 @@ class User {
    * */
   static setCurrent(user) {
     let userObj = JSON.stringify({id: user.id, name: user.name});
-    //console.log('USER OBJ: ' + userObj ); // объект { id: 12, name: 'Vlad' }
     localStorage.setItem('user', userObj);
-    //console.log('LOCAL STORAGE USER: ' + localStorage.user ); // строка "{"id":12,"name":"Vlad"}
   }
 
   /**
@@ -35,8 +33,6 @@ class User {
    * */
   static current() {
     const current = localStorage.getItem('user');
-   // console.log('CURRENT USER FROM LOCAL STORAGE: ' + current ); // объект { id: 12, name: 'Vlad' }
-   // console.log(typeof(current));
     if(typeof(current) === 'string' && current.includes('name')) return JSON.parse(current);
     else return false;
   }
@@ -53,12 +49,11 @@ class User {
     option.data = '';
     option.callback = (response) => {
       if(response.success)  {
-        //console.log('CALL SET');
         const user = {id: response.user.id, name: response.user.name};
         User.setCurrent(user);
       };
       if(!response.success) {
-        console.log('CALL UNSET');
+        
         User.unsetCurrent();
       }
     };
@@ -74,17 +69,10 @@ class User {
    * сохранить пользователя через метод
    * User.setCurrent.
    * */
-  static login(data, recFunc) {
+  static login(data, callback) {
     let option = {};
     option.data = data;
-    option.callback = (response) => {
-      if (response.success) {
-        recFunc();
-      }
-      else {
-        console.log('REG SUCC FALSE');        
-      }
-    }
+    option.callback = callback;
     option.method = 'POST';
     option.url = this.url + "/login";   
     let userReg = createRequest(option);
@@ -97,19 +85,11 @@ class User {
    * сохранить пользователя через метод
    * User.setCurrent.
    * */
-  static register(data, recFunc) {
+  static register(data, callback) {
     
     let option = {};
     option.data = data;
-    option.callback = (response) => {
-      if (response.success) {
-        recFunc();
-      }
-      else {
-        console.log('REG SUCC FALSE');        
-      }
-    }
-      
+    option.callback = callback;      
     option.method = 'POST';
     option.url = this.url + "/register";   
     let userReg = createRequest(option);
@@ -124,12 +104,7 @@ class User {
     let options = {};
     options.url = this.url + '/logout';
     options.method = 'POST';
-    options.callback = (response) => {      
-      if (response.success) {
-        User.unsetCurrent();
-        callback();
-      }
-    }
+    options.callback = callback;
     createRequest(options);
   }
 }

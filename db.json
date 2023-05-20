@@ -29,6 +29,12 @@
       "email": "oleg@neto.net",
       "password": "123",
       "id": "cq3oo7wlfcw5j4r"
+    },
+    {
+      "name": "Bojana",
+      "email": "bojana@neto.net",
+      "password": "1234",
+      "id": "98ind8r4lhvsprfw"
     }
   ],
   "accounts": [
@@ -61,16 +67,6 @@
       "name": "Init3",
       "user_id": "cq3oo7wlfcw5j4r",
       "id": "cq3oi38lffjy19e"
-    },
-    {
-      "name": "Init5",
-      "user_id": "cq3oo7wlfcw5j4r",
-      "id": "cq3o584lffjyde3"
-    },
-    {
-      "name": "Init6",
-      "user_id": "cq3oo7wlfcw5j4r",
-      "id": "cq3ok58lffjytws"
     }
   ],
   "transactions": [
@@ -274,6 +270,94 @@
       "sum": 30,
       "user_id": "cq3oo7wlfcw5j4r",
       "created_at": "2023-04-04T22:56:43.945Z"
+    },
+    {
+      "id": "cq3obfklhuu2tuz",
+      "type": "income",
+      "name": "Купил тапки",
+      "sum": 9000,
+      "user_id": "cq3oo7wlfcw5j4r",
+      "created_at": "2023-05-19T17:27:31.498Z"
+    },
+    {
+      "id": "cq3ogd4lhuu3bwk",
+      "type": "expense",
+      "name": "Купил носки",
+      "sum": 555,
+      "user_id": "cq3oo7wlfcw5j4r",
+      "created_at": "2023-05-19T17:27:54.883Z"
+    },
+    {
+      "id": "cq3oisklhuxqghm",
+      "type": "income",
+      "name": "продал носки",
+      "sum": 700,
+      "user_id": "cq3oo7wlfcw5j4r",
+      "created_at": "2023-05-19T19:09:52.761Z"
+    },
+    {
+      "id": "cq3ohcclhuxs08d",
+      "type": "income",
+      "name": "продал утюг",
+      "sum": 300,
+      "user_id": "cq3oo7wlfcw5j4r",
+      "created_at": "2023-05-19T19:11:05.004Z"
+    },
+    {
+      "id": "cq3oebwlhuxu538",
+      "type": "expense",
+      "name": "Купил носки",
+      "sum": 12,
+      "user_id": "cq3oo7wlfcw5j4r",
+      "created_at": "2023-05-19T19:12:44.611Z"
+    },
+    {
+      "id": "cq3o1p0lhv1dy86",
+      "type": "income",
+      "name": "продал утюг",
+      "sum": 9000,
+      "user_id": "cq3oo7wlfcw5j4r",
+      "created_at": "2023-05-19T20:52:07.685Z"
+    },
+    {
+      "id": "cq3ok9olhv1imdc",
+      "type": "expense",
+      "name": "Купил носки",
+      "sum": 30,
+      "user_id": "cq3oo7wlfcw5j4r",
+      "created_at": "2023-05-19T20:55:45.599Z"
+    },
+    {
+      "id": "cq3ob34lhv1j8iu",
+      "type": "expense",
+      "name": "Купил носки",
+      "sum": 9000,
+      "user_id": "cq3oo7wlfcw5j4r",
+      "created_at": "2023-05-19T20:56:14.309Z"
+    },
+    {
+      "id": "cq3oduglhv1m9yg",
+      "type": "income",
+      "name": "Купил носки",
+      "sum": 10,
+      "user_id": "cq3oo7wlfcw5j4r",
+      "created_at": "2023-05-19T20:58:36.135Z"
+    },
+    {
+      "id": "98indgs8lhvs0kli",
+      "type": "income",
+      "name": "продал утюг",
+      "sum": 348,
+      "user_id": "cq3oo7wlfcw5j4r",
+      "created_at": "2023-05-20T09:17:33.125Z"
+    },
+    {
+      "id": "98indeyslhvs217l",
+      "type": "income",
+      "name": "продал утюг",
+      "sum": 15,
+      "user_id": "cq3oo7wlfcw5j4r",
+      "created_at": "2023-05-20T09:18:41.312Z"
     }
   ]
 }

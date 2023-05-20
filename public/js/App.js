@@ -32,7 +32,6 @@ class App {
    * */
   static initUser() {
     User.fetch(() => {
-      console.log('INIT USER CALLBACK WORKS');
       this.setState(User.current() ? "user-logged" : "init");
 
     });
@@ -139,7 +138,8 @@ class App {
    * Вызывает у полученной страницы метод render()
    * и передаёт туда объект options
    * */
-  static showPage(pageName, options) {
+  static showPage(pageName, options) { 
+    
     const page = this.getPage(pageName);
     page.render(options);
   }

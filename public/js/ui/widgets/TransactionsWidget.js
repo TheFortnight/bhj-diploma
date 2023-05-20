@@ -23,7 +23,6 @@ class TransactionsWidget {
    * экземпляра окна
    * */
   registerEvents() {
-    console.log('REGISTER EVENTS DONE!!!');
     const newIncome = document.querySelector('.create-income-button');
     const newExpense = document.querySelector('.create-expense-button');
 
