@@ -11,16 +11,16 @@ class Entity {
    * Это могут быть счета или доходы/расходы
    * (в зависимости от того, что наследуется от Entity)
    * */
-  static list(data, callback){
+  static list(data, callback){ 
     let option = {};
-    option.data = data;
+    option.data = '';
     option.callback = (response) => {
       if (response.success) {
         callback(response.data);
       }
     };
     option.method = 'GET';
-    option.url = this.url; // this???
+    option.url = this.url+'/'+data;
     createRequest(option);
   }
 
@@ -44,7 +44,9 @@ class Entity {
    * */
   static remove(data, callback ) {
     let option = {};
-    option.data = data;
+    let formData = new FormData();
+    formData.append('id', data);
+    option.data = formData;
     option.callback = callback;
     option.method = 'DELETE';
     option.url = this.url;

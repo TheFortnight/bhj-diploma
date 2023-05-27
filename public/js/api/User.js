@@ -43,23 +43,12 @@ class User {
    * авторизованном пользователе.
    * */
   static fetch(callback) {
-    let call = callback;
-    call();
     let option = {};
     option.data = '';
-    option.callback = (response) => {
-      if(response.success)  {
-        const user = {id: response.user.id, name: response.user.name};
-        User.setCurrent(user);
-      };
-      if(!response.success) {
-        
-        User.unsetCurrent();
-      }
-    };
+    option.callback = callback; 
     option.method = 'GET';
     option.url = this.url + '/current';
-    createRequest(option);  
+    createRequest(option);
     
   }
 

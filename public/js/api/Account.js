@@ -13,9 +13,8 @@ class Account extends Entity {
     let option = {};
     option.data = '';
     option.callback = callback;
-    option.method = 'GET';
-    
-    option.url = this.url +'?'+ id;
+    option.method = 'GET';    
+    option.url = this.url+'/'+id;
     console.log('ACCOUNT GET URL: '+option.url);
     createRequest(option);
 

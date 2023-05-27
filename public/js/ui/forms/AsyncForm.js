@@ -37,16 +37,19 @@ class AsyncForm {
    * }
    * */
   getData() {    
-    const element = this.element;
-    let inputs = element.querySelectorAll('input');
-    let data = {};
-    inputs.forEach(input => {
+    //const element = this.element;
+    //const form = element.querySelector('.form');
+    
+    const formData = new FormData( this.element );
+
+    //let data = formData.entries();
+   /* inputs.forEach(input => {
       console.log(input.name+': '+input.value)
       data[input.name] = input.value;
       
-    });
+    });*/
     
-    return data;
+    return formData;
   }
 
   onSubmit(){

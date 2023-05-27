@@ -16,7 +16,7 @@
 
 Код виджета представлен следующим образом:
 
-```html
+```html 
 <div class="transactions-panel">
     <button class="btn btn-success btn-block create-income-button">
         <span class="fa fa-thumbs-o-up"></span>

@@ -54,13 +54,15 @@ class TransactionsPage {
   removeAccount() {
     if (!this.lastOptions) return;
     const conf = confirm('Delete account?');
+    console.log('LAST OPTS: '+this.lastOptions);
     if (conf) {
-      Account.remove({id: this.lastOptions}, ((response) => {
+      Account.remove(this.lastOptions, ((response) => {
         if (response.success) {
           App.updateWidgets();
           App.updateForms();
         }
       }))
+      this.clear([]);
     }
   }
 
@@ -73,7 +75,7 @@ class TransactionsPage {
   removeTransaction( id ) {
     const conf = confirm('Вы действительно хотите удалить эту транзакцию?');
     if (conf) {
-      Transaction.remove({id}, ((response)=> {
+      Transaction.remove(id, ((response)=> {
         if (response.success) {
           App.update();
         }
@@ -92,17 +94,17 @@ class TransactionsPage {
     this.lastOptions = options;
     const callback = (response) => {
       if(response.success) {
-        const accObj = response.data.find(el => el.id == options);
+        const accObj = response.data;
         const name = accObj.name;
         this.renderTitle(name);
       }
-    };
-   
+    };   
     Account.get(options, callback);
-    const currUser = User.current();
-    Transaction.list(currUser, ((data)=> {
-      if (data) {
-        console.log('Trans list: '+data.length)
+
+    //const currUser = User.current();
+   
+    Transaction.list(options, ((data)=> {
+      if (data) {        
         this.renderTransactions(data);
       }
     }))

@@ -31,9 +31,16 @@ class App {
    * состояние 'init'
    * */
   static initUser() {
-    User.fetch(() => {
-      this.setState(User.current() ? "user-logged" : "init");
-
+    User.fetch((response) => {
+      if(response.success)  {
+        const user = {id: response.user.id, name: response.user.name};
+        this.setState('user-logged');
+        //this.setCurrent(user);
+      };
+      if(!response.success) {
+        this.setState('init');
+        //User.unsetCurrent();
+      }
     });
       
   }
@@ -68,7 +75,7 @@ class App {
     this.widgets = {
       accounts: new AccountsWidget(document.querySelector(".accounts-panel")),
       transactions: new TransactionsWidget(
-        document.querySelector(".transactions-panel")
+      document.querySelector(".transactions-panel")
       ),
       user: new UserWidget(document.querySelector(".user-panel")),
     };

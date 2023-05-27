@@ -58,9 +58,8 @@ class AccountsWidget {
     const currUser = User.current();
     console.log('CURR USER: '+JSON.stringify(currUser));
     if(currUser !== false) {
-      Account.list(currUser, (response) => {
+      Account.list(currUser.id, (response) => {
         if (response.length > 0) {
-          console.log('ACCS LENGTH IS: '+response.length);
           this.clear();
           this.renderItem(response);
           this.registerEvents(); // Не по ТЗ!!!
@@ -90,9 +89,8 @@ class AccountsWidget {
     let activeAcc = document.querySelector('.account.active');
     if (activeAcc !== null) activeAcc.classList.remove('active');
     element.classList.add('active');
-    const id = element.getAttribute('data-id');
-    console.log('ONSELECT ACCOUNT')
-    App.showPage( 'transactions', id) // Specify structure!!!
+    const account_id = element.getAttribute('data-id');
+    App.showPage( 'transactions', account_id)  
   }
 
   /**
