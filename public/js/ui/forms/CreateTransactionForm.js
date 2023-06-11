@@ -41,16 +41,14 @@ class CreateTransactionForm extends AsyncForm {
    * */
   onSubmit(data) {
     
-    Transaction.create(data, (response) => {
-      if (response.success) {
+    Transaction.create(data, (err, response) => {
+      if (response && response.success) {
         App.update();
+        App.getModal('newIncome').close();
+        App.getModal('newExpense').close(); // пока не могу понять, в каком месте передается тип транзакции, чтобы закрывать конкретную форму
+      } else {
         this.element.reset();
-        let el = this.element.parentElement;
-      el = el.parentElement;
-      el = el.parentElement;
-      el = el.parentElement;
-      el = new Modal(el);
-      el.close();
+        console.error(response.error)
       }
     });
   }

@@ -37,8 +37,8 @@ class AccountsWidget {
     
     let currAccBtns = this.element.querySelectorAll('.account');
     currAccBtns.forEach(elem => {
-      elem.addEventListener('click', (ev) => {
-        ev.preventDefault();
+      elem.addEventListener('click', (event) => {
+        event.preventDefault();
         this.onSelectAccount(elem);
       })      
     });
@@ -56,9 +56,9 @@ class AccountsWidget {
    * */
   update() {
     const currUser = User.current();
-    console.log('CURR USER: '+JSON.stringify(currUser));
+   // console.log('CURR USER: '+JSON.stringify(currUser));
     if(currUser !== false) {
-      Account.list(currUser.id, (response) => {
+      Account.list({id: currUser.id}, (response) => {
         if (response.length > 0) {
           this.clear();
           this.renderItem(response);
@@ -89,8 +89,9 @@ class AccountsWidget {
     let activeAcc = document.querySelector('.account.active');
     if (activeAcc !== null) activeAcc.classList.remove('active');
     element.classList.add('active');
-    const account_id = element.getAttribute('data-id');
-    App.showPage( 'transactions', account_id)  
+    const id = element.getAttribute('data-id');
+    App.showPage( 'transactions', {account_id: id});
+    console.log('ONSELECT LOOKS FOR ID:'+id); 
   }
 
   /**

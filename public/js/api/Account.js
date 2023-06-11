@@ -11,11 +11,18 @@ class Account extends Entity {
   
   static get(id, callback){
     let option = {};
-    option.data = '';
-    option.callback = callback;
+    option.data = id;
+    option.callback = (err, response) => {
+      if (response && response.success) {
+        console.log('ACCOUNT GET RESPONSE: '+JSON.stringify(response));
+        callback(false, response);
+      } else {
+        console.error(response.error);
+      }
+    }
     option.method = 'GET';    
-    option.url = this.url+'/'+id;
-    console.log('ACCOUNT GET URL: '+option.url);
+    option.url = this.url;
+    console.log('ACCOUNT GET DATA: '+JSON.stringify(id));
     createRequest(option);
 
   }

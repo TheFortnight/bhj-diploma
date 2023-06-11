@@ -45,7 +45,12 @@ class User {
   static fetch(callback) {
     let option = {};
     option.data = '';
-    option.callback = callback; 
+    option.callback = (err, response) => {
+      if (response && response.success) {
+        this.setCurrent(response.user);
+      }
+      callback(err, response);
+    }  
     option.method = 'GET';
     option.url = this.url + '/current';
     createRequest(option);
@@ -60,12 +65,18 @@ class User {
    * */
   static login(data, callback) {
     let option = {};
+    option.responseType = 'json';
     option.data = data;
-    option.callback = callback;
+    option.callback = (err, response) => {
+      if (response && response.success) {
+        this.setCurrent(response.user);
+      }
+      callback(err, response);
+    }    
     option.method = 'POST';
-    option.url = this.url + "/login";   
-    let userReg = createRequest(option);
-    return userReg;
+    option.url = this.url + "/login";
+    createRequest(option);
+   
   }
 
   /**
@@ -78,11 +89,16 @@ class User {
     
     let option = {};
     option.data = data;
-    option.callback = callback;      
+    option.callback = (err, response) => {
+      if (response && response.success) {
+        this.setCurrent(response.user);
+      }
+      callback(err, response);
+    } 
     option.method = 'POST';
     option.url = this.url + "/register";   
-    let userReg = createRequest(option);
-    return userReg;   
+    createRequest(option);
+       
   }
 
   /**

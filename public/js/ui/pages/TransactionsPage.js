@@ -36,10 +36,12 @@ class TransactionsPage {
       this.removeAccount();
     });
 
-    const remTransBtn = document.querySelector('.remove-account');
-    remTransBtn.addEventListener('click', () => {
+    const remTransBtn = document.querySelector('.transaction__remove');
+    if (remTransBtn) { 
+      remTransBtn.addEventListener('click', () => {
       this.removeTransaction();
     });
+  }
   }
 
   /**
@@ -54,12 +56,14 @@ class TransactionsPage {
   removeAccount() {
     if (!this.lastOptions) return;
     const conf = confirm('Delete account?');
-    console.log('LAST OPTS: '+this.lastOptions);
+    console.log('LAST OPTS: '+JSON.stringify(this.lastOptions));
     if (conf) {
       Account.remove(this.lastOptions, ((response) => {
-        if (response.success) {
+        if (response && response.success) {
           App.updateWidgets();
           App.updateForms();
+        } else {
+          console.error(response.error);
         }
       }))
       this.clear([]);
@@ -75,9 +79,11 @@ class TransactionsPage {
   removeTransaction( id ) {
     const conf = confirm('Вы действительно хотите удалить эту транзакцию?');
     if (conf) {
-      Transaction.remove(id, ((response)=> {
-        if (response.success) {
+      Transaction.remove(id, ((response)=> { 
+        if (response && response.success) {
           App.update();
+        } else {
+          console.error(response.error);
         }
       }))
     }
@@ -90,20 +96,23 @@ class TransactionsPage {
    * в TransactionsPage.renderTransactions()
    * */
   render(options){
+    console.log('RENDER OPTIONS: '+JSON.stringify(options));
     if (!options) return;
     this.lastOptions = options;
-    const callback = (response) => {
-      if(response.success) {
-        const accObj = response.data;
-        const name = accObj.name;
+    const callback = (err, response) => {
+      if(response && response.success) {
+        console.log('RENDER RESPONSE: '+JSON.stringify(response))
+        const actAcc = response.data.find(el => el.id === options.account_id);
+        const name = actAcc.name;
         this.renderTitle(name);
+      } else {
+        console.error(response.error);
       }
     };   
     Account.get(options, callback);
-
-    //const currUser = User.current();
    
     Transaction.list(options, ((data)=> {
+      
       if (data) {        
         this.renderTransactions(data);
       }
@@ -116,6 +125,7 @@ class TransactionsPage {
    * Устанавливает заголовок: «Название счёта»
    * */
   clear() {
+    
     this.renderTransactions([]);
     let title = this.element.querySelector('.content-title');
     title.innerHTML = 'Название счёта';
@@ -145,7 +155,7 @@ class TransactionsPage {
     hour = hour < 10 ? '0' + hour : hour;
     let minute = recDate.getMinutes();
     minute = minute < 10 ? '0' + minute : minute;
-    const monthsArr = ["января, февраля, марта, апреля, мая, июня"];
+    const monthsArr = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа'];
     return (`${day} ${monthsArr[month]} ${year} г. в ${hour}:${minute}`);
 
 
@@ -166,6 +176,7 @@ class TransactionsPage {
    * 
    * */
   getTransactionHTML(item){
+   
     const actDate = this.formatDate(item.created_at);
    
       return `<div class="transaction transaction_${item.type} row">
@@ -182,7 +193,7 @@ class TransactionsPage {
     <div class="col-md-3">
       <div class="transaction__summ">
       <!--  сумма -->
-          200 <span class="currency">${item.sum}₽</span>
+      ${item.sum} <span class="currency">₽</span>
       </div>
     </div>
     <div class="col-md-2 transaction__controls">
@@ -201,6 +212,7 @@ class TransactionsPage {
    * */
   renderTransactions(data){
     let trans = this.element.querySelector('.content');
+    trans.innerHTML = '';
     data.forEach(opts => {
       trans.innerHTML += this.getTransactionHTML(opts);
     })

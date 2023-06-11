@@ -60,7 +60,7 @@
 
 Форма наследуется от *AsyncForm*.
 
-Рассмотрим форму расхода:
+Рассмотрим форму расхода: 
 
 ```html
 <div class="modal fade in" id="modal-new-expense" data-modal-id="newExpense">

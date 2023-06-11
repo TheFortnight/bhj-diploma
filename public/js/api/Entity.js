@@ -13,14 +13,16 @@ class Entity {
    * */
   static list(data, callback){ 
     let option = {};
-    option.data = '';
-    option.callback = (response) => {
-      if (response.success) {
+    option.data = data;
+    option.callback = (err, response) => {
+      if (response && response.success) {
         callback(response.data);
+      } else {
+        console.error(response.error);
       }
     };
     option.method = 'GET';
-    option.url = this.url+'/'+data;
+    option.url = this.url;
     createRequest(option);
   }
 
@@ -32,7 +34,13 @@ class Entity {
   static create(data, callback) {
     let option = {};
     option.data = data;
-    option.callback = callback;
+    option.callback = (err, response) => {
+      if (response && response.success) {
+        callback (false, response)
+      } else {
+        console.error(response.error);
+      }
+    }
     option.method = 'PUT';
     option.url = this.url;
     createRequest(option);
@@ -44,10 +52,16 @@ class Entity {
    * */
   static remove(data, callback ) {
     let option = {};
-    let formData = new FormData();
-    formData.append('id', data);
-    option.data = formData;
-    option.callback = callback;
+   // let formData = new FormData();
+   // formData.append('id', data);
+    option.data = data;
+    option.callback = (err, response) => {
+      if (response && response.success) {
+        callback (response)
+      } else {
+        console.error(response.error);
+      }
+    }
     option.method = 'DELETE';
     option.url = this.url;
     createRequest(option);
