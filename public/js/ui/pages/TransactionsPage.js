@@ -31,17 +31,16 @@ class TransactionsPage {
    * TransactionsPage.removeAccount соответственно
    * */
   registerEvents() {
+    const page = document.querySelector('.content-wrapper');
+
     const remAccBtn = document.querySelector('.remove-account');
-    remAccBtn.addEventListener('click', () => {
-      this.removeAccount();
+    page.addEventListener('click', (event) => {
+      const target = event.target.closest('.btn-danger');
+     
+      if (target.classList.contains('remove-account')) this.removeAccount();
+      if (target.classList.contains('transaction__remove')) this.removeTransaction(target.getAttribute('data-id'));
     });
 
-    const remTransBtn = document.querySelector('.transaction__remove');
-    if (remTransBtn) { 
-      remTransBtn.addEventListener('click', () => {
-      this.removeTransaction();
-    });
-  }
   }
 
   /**
@@ -56,9 +55,9 @@ class TransactionsPage {
   removeAccount() {
     if (!this.lastOptions) return;
     const conf = confirm('Delete account?');
-    console.log('LAST OPTS: '+JSON.stringify(this.lastOptions));
+   
     if (conf) {
-      Account.remove(this.lastOptions, ((response) => {
+      Account.remove({id: this.lastOptions.account_id}, ((response) => {
         if (response && response.success) {
           App.updateWidgets();
           App.updateForms();
@@ -79,7 +78,7 @@ class TransactionsPage {
   removeTransaction( id ) {
     const conf = confirm('Вы действительно хотите удалить эту транзакцию?');
     if (conf) {
-      Transaction.remove(id, ((response)=> { 
+      Transaction.remove({id}, ((response)=> { 
         if (response && response.success) {
           App.update();
         } else {
@@ -96,12 +95,12 @@ class TransactionsPage {
    * в TransactionsPage.renderTransactions()
    * */
   render(options){
-    console.log('RENDER OPTIONS: '+JSON.stringify(options));
+   
     if (!options) return;
     this.lastOptions = options;
     const callback = (err, response) => {
       if(response && response.success) {
-        console.log('RENDER RESPONSE: '+JSON.stringify(response))
+      
         const actAcc = response.data.find(el => el.id === options.account_id);
         const name = actAcc.name;
         this.renderTitle(name);

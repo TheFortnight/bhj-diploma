@@ -64,7 +64,7 @@ __асинхронно__, то есть без перезагрузки стра
 </form>
 ```
 
-```javascript
+```javascript 
 const form = document.getElementById( 'myform' ),
     asyncForm = new AsyncForm( form );
 

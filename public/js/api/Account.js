@@ -14,7 +14,7 @@ class Account extends Entity {
     option.data = id;
     option.callback = (err, response) => {
       if (response && response.success) {
-        console.log('ACCOUNT GET RESPONSE: '+JSON.stringify(response));
+        
         callback(false, response);
       } else {
         console.error(response.error);
@@ -22,7 +22,7 @@ class Account extends Entity {
     }
     option.method = 'GET';    
     option.url = this.url;
-    console.log('ACCOUNT GET DATA: '+JSON.stringify(id));
+   
     createRequest(option);
 
   }

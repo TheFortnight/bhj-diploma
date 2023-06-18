@@ -54,44 +54,12 @@
       "id": "3"
     },
     {
-      "name": "Bojana 4",
-      "user_id": "98ind8r4lhvsprfw",
-      "id": "3bynl68liros0le"
-    },
-    {
       "name": "Bojana 3",
       "user_id": "98ind8r4lhvsprfw",
       "id": "3byncn8lirv128a"
     }
   ],
   "transactions": [
-    {
-      "id": "3byncq8liruixoj",
-      "type": "income",
-      "name": "Bojana income 1",
-      "sum": 30,
-      "account_id": "3bynl68liros0le",
-      "user_id": "98ind8r4lhvsprfw",
-      "created_at": "2023-06-11T19:56:26.754Z"
-    },
-    {
-      "id": "3bynl7olirupt5t",
-      "type": "expense",
-      "name": "Bojana 4 expense",
-      "sum": 10,
-      "account_id": "3bynl68liros0le",
-      "user_id": "98ind8r4lhvsprfw",
-      "created_at": "2023-06-11T20:01:47.488Z"
-    },
-    {
-      "id": "3byne0oliruudu8",
-      "type": "expense",
-      "name": "Bojana expense 2",
-      "sum": 10,
-      "account_id": "3bynl68liros0le",
-      "user_id": "98ind8r4lhvsprfw",
-      "created_at": "2023-06-11T20:05:20.911Z"
-    },
     {
       "id": "3bynhxglirv1pz9",
       "type": "expense",

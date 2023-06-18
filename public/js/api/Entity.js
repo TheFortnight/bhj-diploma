@@ -52,8 +52,10 @@ class Entity {
    * */
   static remove(data, callback ) {
     let option = {};
-   // let formData = new FormData();
-   // formData.append('id', data);
+    let formData = new FormData();
+    for (let key in data) {
+      formData.append(key, data[key]);
+    }
     option.data = data;
     option.callback = (err, response) => {
       if (response && response.success) {
